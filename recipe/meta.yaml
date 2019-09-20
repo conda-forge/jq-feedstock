@@ -10,11 +10,12 @@ source:
   sha256: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
 
 build:
-  number: 1000
-  skip: True  # [win]
+  number: 1001
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
+    - autotools_clang_conda  # [win]
     - {{ compiler('c') }}
     - make
   host:
