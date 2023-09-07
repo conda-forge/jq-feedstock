@@ -1,38 +1,45 @@
-{% set version = "1.6" %}
+{% set name = "jq" %}
+{% set version = "jq-1.6" %}
 
 package:
-  name: jq
-  version: {{ version }}
+  name: {{ name|lower }}
+  version: {{ version|replace("jq-", "") }}
 
 source:
-  fn: jq-{{ version }}.tar.gz
-  url: https://github.com/stedolan/jq/releases/download/jq-{{ version }}/jq-{{ version }}.tar.gz
-  sha256: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
+  url: https://github.com/jqlang/{{ name }}/archive/{{ version }}.tar.gz
+  sha256: 158182b85f3be9e23ab1dc50cfcc24e415aade2a0b8a5d9f709e0b587666d61b
 
 build:
-  number: 1000
-  skip: True  # [win]
+  number: 1001
+  script: bash {{ RECIPE_DIR }}/install.sh
 
 requirements:
   build:
-    - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - make
+    - autoconf  # [not win]
+    - automake  # [not win]
+    - libtool  # [not win]
+    - m2-autoconf  # [win]
+    - m2-automake-wrapper  # [win]
+    - m2-libtool  # [win]
+    - posix  # [win]
   host:
-    - oniguruma 6.9.*
+    - oniguruma 6.9.*  # [not win]
   run:
-    - oniguruma 6.9.*
+    - oniguruma 6.9.*  # [not win]
 
 test:
   commands:
-    - jq --help  # [not win]
+    - jq --help
 
 about:
-  home: http://stedolan.github.io/jq/
+  home: https://github.com/jqlang/jq
   license: MIT
+  license_family: MIT
   license_file: COPYING
   summary: A command-line JSON processor.
 
 extra:
   recipe-maintainers:
     - jakirkham
+    - kenodegard
