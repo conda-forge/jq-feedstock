@@ -1,5 +1,5 @@
 {% set name = "jq" %}
-{% set version = "jq-1.6" %}
+{% set version = "jq-1.7" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ source:
   sha256: 158182b85f3be9e23ab1dc50cfcc24e415aade2a0b8a5d9f709e0b587666d61b
 
 build:
-  number: 1001
+  number: 0
   script: bash {{ RECIPE_DIR }}/install.sh
 
 requirements:
@@ -23,6 +23,8 @@ requirements:
     - m2-automake-wrapper  # [win]
     - m2-libtool  # [win]
     - posix  # [win]
+    - make  # [not win]
+    - m2-make  # [win]
   host:
     - oniguruma 6.9.*  # [not win]
   run:

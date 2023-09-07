@@ -1,18 +1,10 @@
 #!/bin/bash
-set -e
+set -ex
 
 autoreconf \
     --install \
     --force \
     --verbose
-
-# if [[ $(uname) =~ M.* ]]; then
-#     HOST=--host=x86_64-w64-mingw32
-#     pushd modules/oniguruma
-#         autoreconf -vfi
-#     popd
-#     PREFIX=${PREFIX}/Library/mingw-w64
-# fi
 
 ./configure \
     --disable-maintainer-mode \
