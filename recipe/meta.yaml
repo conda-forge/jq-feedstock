@@ -25,6 +25,7 @@ requirements:
     - m2-make  # [win]
     - make  # [not win]
     - posix  # [win]
+    - m2w64-toolchain  # [win]
   host:
     - oniguruma 6.9.*  # [not win]
   run:
