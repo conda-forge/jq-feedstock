@@ -9,9 +9,7 @@ autoreconf \
 ./configure \
     --disable-maintainer-mode \
     --prefix="${PREFIX}" \
-    --with-oniguruma="${PREFIX}" \
-    CFLAGS="-Wno-implicit-function-declaration" \
-    "${HOST}"
+    --with-oniguruma="${PREFIX}"
 
 make -j${CPU_COUNT}
 [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]] && make check
