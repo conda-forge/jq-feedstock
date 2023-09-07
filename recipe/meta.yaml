@@ -27,9 +27,9 @@ requirements:
     - posix  # [win]
     - m2w64-toolchain  # [win]
   host:
-    - oniguruma 6.9.*  # [not win]
+    - oniguruma 6.9.*
   run:
-    - oniguruma 6.9.*  # [not win]
+    - oniguruma 6.9.*
 
 test:
   commands:
