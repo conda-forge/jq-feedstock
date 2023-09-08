@@ -2,7 +2,8 @@
 set -ex
 
 if [[ $(uname) =~ MSYS.* ]]; then
-    CFLAGS="-I${LIBRARY_PREFIX}/mingw-w64/x86_64-w64-mingw32/include/"
+    CFLAGS="-I${PREFIX}/Library/mingw-w64/x86_64-w64-mingw32/include"
+    ONIGURUMA="${PREFIX}/Library"
 fi
 
 ./configure \
@@ -10,10 +11,12 @@ fi
     --disable-valgrind \
     --disable-maintainer-mode \
     --prefix="${PREFIX}" \
-    --with-oniguruma=${LIBRARY_PREFIX:-${PREFIX}} \
+    --with-oniguruma="${ONIGURUMA}" \
     CFLAGS="${CFLAGS}"
 
 
-make -j${CPU_COUNT}
+if ! make -j${CPU_COUNT}; then
+    cat Makefile
+fi
 [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]] && make check VERBOSE=yes
 make install
