@@ -6,8 +6,8 @@ package:
   version: {{ version|replace("jq-", "") }}
 
 source:
-  url: https://github.com/jqlang/{{ name }}/archive/{{ version }}.tar.gz
-  sha256: f755e813b88b494a5087502812cb35bc32e1544102345900707e8d71124caffc
+  url: https://github.com/jqlang/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  sha256: 402a0d6975d946e6f4e484d1a84320414a0ff8eb6cf49d2c11d144d4d344db62
 
 build:
   number: 0
@@ -15,17 +15,11 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - autoconf  # [not win]
-    - automake  # [not win]
-    - libtool  # [not win]
-    - m2-autoconf  # [win]
-    - m2-automake-wrapper  # [win]
-    - m2-libtool  # [win]
+    - {{ compiler('c') }}  # [not win]
+    - m2-base  # [win]
     - m2-make  # [win]
-    - make  # [not win]
-    - posix  # [win]
     - m2w64-toolchain  # [win]
+    - make  # [not win]
   host:
     - oniguruma 6.9.*
   run:
