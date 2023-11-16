@@ -1,23 +1,25 @@
-{% set version = "1.6" %}
+{% set name = "jq" %}
+{% set version = "jq-1.7" %}
 
 package:
-  name: jq
-  version: {{ version }}
+  name: {{ name|lower }}
+  version: {{ version|replace("jq-", "") }}
 
 source:
-  fn: jq-{{ version }}.tar.gz
-  url: https://github.com/stedolan/jq/releases/download/jq-{{ version }}/jq-{{ version }}.tar.gz
-  sha256: 5de8c8e29aaa3fb9cc6b47bb27299f271354ebb72514e3accadc7d38b5bbaa72
+  url: https://github.com/jqlang/{{ name }}/releases/download/{{ version }}/{{ version }}.tar.gz
+  sha256: 402a0d6975d946e6f4e484d1a84320414a0ff8eb6cf49d2c11d144d4d344db62
 
 build:
-  number: 1000
-  skip: True  # [win]
+  number: 0
+  script: bash {{ RECIPE_DIR }}/install.sh
 
 requirements:
   build:
-    - gnuconfig  # [unix]
-    - {{ compiler('c') }}
-    - make
+    - {{ compiler('c') }}  # [not win]
+    - m2-base  # [win]
+    - m2-make  # [win]
+    - m2w64-toolchain  # [win]
+    - make  # [not win]
   host:
     - oniguruma 6.9.*
   run:
@@ -25,14 +27,16 @@ requirements:
 
 test:
   commands:
-    - jq --help  # [not win]
+    - jq --help
 
 about:
-  home: http://stedolan.github.io/jq/
+  home: https://github.com/jqlang/jq
   license: MIT
+  license_family: MIT
   license_file: COPYING
   summary: A command-line JSON processor.
 
 extra:
   recipe-maintainers:
     - jakirkham
+    - kenodegard
