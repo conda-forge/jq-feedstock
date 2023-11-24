@@ -3,7 +3,7 @@ About jq-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jq-feedstock/blob/main/LICENSE.txt)
 
-Home: http://stedolan.github.io/jq/
+Home: https://jqlang.github.io/jq/
 
 Package license: MIT
 
@@ -59,6 +59,10 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/jq-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
+              <td>osx_arm64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/jq-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -190,5 +194,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@0xbe7a](https://github.com/0xbe7a/)
 * [@jakirkham](https://github.com/jakirkham/)
 
