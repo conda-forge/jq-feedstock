@@ -11,13 +11,14 @@ source:
 
 build:
   number: 0
-  skip: True  # [win]
+  skip: True  # [win and vc<14]
 
 requirements:
   build:
+    - autotools_clang_conda  # [win]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
-    - make
+    - make  # [unix]
   host:
     - oniguruma 6.9.*
   run:
