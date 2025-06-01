@@ -1,0 +1,44 @@
+schema_version: 1
+
+context:
+  version: 1.8.0
+
+package:
+  name: jq
+  version: ${{ version }}
+
+source:
+  url: https://github.com/jqlang/jq/releases/download/jq-${{ version }}/jq-${{ version }}.tar.gz
+  sha256: 91811577f91d9a6195ff50c2bffec9b72c8429dc05ec3ea022fd95c06d2b319c
+
+build:
+  number: 0
+  skip: win
+
+requirements:
+  build:
+    - if: unix
+      then: gnuconfig
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - make
+  host:
+    - oniguruma 6.9.*
+  run:
+    - oniguruma 6.9.*
+
+tests:
+  - script:
+      - if: not win
+        then: jq --help
+
+about:
+  license: MIT
+  license_file: COPYING
+  summary: A command-line JSON processor.
+  homepage: https://jqlang.github.io/jq/
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - "0xbe7a"
