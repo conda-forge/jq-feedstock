@@ -2,10 +2,6 @@
 
 set -ex
 
-# Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/gnuconfig/config.* ./modules/oniguruma
-cp $BUILD_PREFIX/share/gnuconfig/config.* ./config
-
 chmod +x configure
 
 ./configure --prefix=$PREFIX --with-oniguruma=$PREFIX
