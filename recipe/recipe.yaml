@@ -10,9 +10,9 @@ package:
 source:
   url: https://github.com/jqlang/jq/releases/download/jq-${{ version }}/jq-${{ version }}.tar.gz
   sha256: 91811577f91d9a6195ff50c2bffec9b72c8429dc05ec3ea022fd95c06d2b319c
-  patches:
-    - if: linux
-      then: 0001-disable-color-tests.patch
+  # patches:
+  #   - if: linux
+  #     then: 0001-disable-color-tests.patch
 
 build:
   number: 0
