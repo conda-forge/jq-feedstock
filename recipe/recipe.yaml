@@ -1,10 +1,9 @@
-schema_version: 1
-
 context:
+  name: jq
   version: "1.8.1"
 
 package:
-  name: jq
+  name: ${{ name|lower }}
   version: ${{ version }}
 
 source:
@@ -12,33 +11,39 @@ source:
   sha256: 2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
 
 build:
-  number: 0
-  skip: win
+  number: 1
 
 requirements:
   build:
-    - if: unix
-      then: gnuconfig
     - ${{ compiler('c') }}
-    - ${{ stdlib("c") }}
-    - make
+    - ${{ stdlib('c') }}
+    - if: win
+      then: autotools_clang_conda
+      else: make
   host:
-    - oniguruma 6.9.*
+    - oniguruma >=6.9
   run:
-    - oniguruma 6.9.*
+    - oniguruma >=6.9
 
 tests:
   - script:
-      - if: not win
-        then: jq --help
+      - jq --help
 
 about:
+  homepage: https://jqlang.org/
+  summary: 'A command-line JSON processor'
+  description: |
+    jq is a lightweight and flexible command-line JSON processor akin to
+    sed,awk,grep, and friends for JSON data. It's written in portable C and has
+    zero runtime dependencies, allowing you to easily slice, filter, map, and
+    transform structured data.
   license: MIT
   license_file: COPYING
-  summary: A command-line JSON processor.
-  homepage: https://jqlang.github.io/jq/
+  documentation: https://jqlang.org/
+  repository: https://github.com/jqlang/jq
 
 extra:
   recipe-maintainers:
     - jakirkham
     - "0xbe7a"
+    - aywi
