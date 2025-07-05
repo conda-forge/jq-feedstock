@@ -11,6 +11,10 @@ source:
   sha256: 2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
 
 build:
+  script:
+    # New recipe uses `build.bat` by default on Windows, but `.gitattributes` still uses `bld.bat`
+    - if: win
+      then: bld.bat
   number: 1
 
 requirements:
