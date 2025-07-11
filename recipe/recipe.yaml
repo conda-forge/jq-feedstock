@@ -19,7 +19,11 @@ requirements:
       then:
         - ${{ compiler('m2w64_c') }}
         - ${{ stdlib('m2w64_c') }}
-        - autotools_clang_conda
+        - m2-autoconf
+        - m2-automake-wrapper
+        - m2-bash
+        - m2-libtool
+        - m2-make
       else:
         - ${{ compiler('c') }}
         - ${{ stdlib('c') }}
