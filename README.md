@@ -3,11 +3,20 @@ About jq-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/jq-feedstock/blob/main/LICENSE.txt)
 
-Home: https://jqlang.github.io/jq/
+Home: https://jqlang.org/
 
 Package license: MIT
 
-Summary: A command-line JSON processor.
+Summary: A command-line JSON processor
+
+Development: https://github.com/jqlang/jq
+
+Documentation: https://jqlang.org/
+
+jq is a lightweight and flexible command-line JSON processor akin to
+sed,awk,grep, and friends for JSON data. It's written in portable C and has
+zero runtime dependencies, allowing you to easily slice, filter, map, and
+transform structured data.
 
 Current build status
 ====================
@@ -41,6 +50,13 @@ Current build status
                 </a>
               </td>
             </tr><tr>
+              <td>linux_ppc64le</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/jq-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_ppc64le_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
               <td>osx_64</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
@@ -52,6 +68,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/jq-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=483&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/jq-feedstock?branchName=main&jobName=win&configuration=win%20win_64_" alt="variant">
                 </a>
               </td>
             </tr>
@@ -184,5 +207,6 @@ Feedstock Maintainers
 =====================
 
 * [@0xbe7a](https://github.com/0xbe7a/)
+* [@aywi](https://github.com/aywi/)
 * [@jakirkham](https://github.com/jakirkham/)
 
