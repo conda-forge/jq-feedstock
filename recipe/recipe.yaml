@@ -15,9 +15,7 @@ build:
 
 requirements:
   build:
-    - if: win
-      then: mingw-w64-ucrt-x86_64-gcc
-      else: ${{ compiler('c') }}
+    - ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - make
   host:
