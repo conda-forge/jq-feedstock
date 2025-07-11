@@ -4,7 +4,7 @@ set -ex
 
 chmod +x configure
 
-# if [[ "$target_platform" == "win-64" ]]; then
+if [[ "$target_platform" == "win-64" ]]; then
 #     # Fix `src/lexer.c:839:10: fatal error: 'unistd.h' file not found`, `src/lexer.h:474:10: fatal error: 'unistd.h' file not found`
 #     export CFLAGS="$CFLAGS -DYY_NO_UNISTD_H"
 #     # Fix `src/lexer.c:2041:40: error: call to undeclared function 'isatty'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]`
@@ -14,11 +14,11 @@ chmod +x configure
 #     # `src/main.c:4:10: fatal error: 'libgen.h' file not found`
 #     # `src/builtin.c:11:10: fatal error: 'sys/time.h' file not found`
 #     export CFLAGS="$CFLAGS -DWIN32"
-#     # Fix `configure: error: unsafe absolute working directory name`
-#     cd $(pwd)
-# fi
+    # Fix `configure: error: unsafe absolute working directory name`
+    cd $(pwd)
+fi
 ./configure --prefix=$PREFIX --with-oniguruma=$PREFIX
-# [[ "$target_platform" == "win-64" ]] && patch_libtool
+[[ "$target_platform" == "win-64" ]] && patch_libtool
 
 make -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
