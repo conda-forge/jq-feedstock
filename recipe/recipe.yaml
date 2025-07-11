@@ -11,20 +11,19 @@ source:
   sha256: 2be64e7129cecb11d5906290eba10af694fb9e3e7f9fc208a311dc33ca837eb0
 
 build:
-  script:
   number: 1
 
 requirements:
   build:
     - if: win
-      then: ${{ compiler('m2w64_c') }}
+      then: mingw-w64-ucrt-x86_64-gcc
       else: ${{ compiler('c') }}
     - ${{ stdlib('c') }}
     - make
   host:
     - oniguruma 6.9.*
   run:
-    - oniguruma >=6.9
+    - oniguruma 6.9.*
 
 tests:
   - script:
