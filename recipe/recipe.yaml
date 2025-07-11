@@ -12,20 +12,17 @@ source:
 
 build:
   script:
-    # New recipe uses `build.bat` by default on Windows, but `.gitattributes` still uses `bld.bat`
-    - if: win
-      then: bld.bat
   number: 1
 
 requirements:
   build:
-    - ${{ compiler('c') }}
-    - ${{ stdlib('c') }}
     - if: win
-      then: autotools_clang_conda
-      else: make
+      then: ${{ compiler('m2w64_c') }}
+      else: ${{ compiler('c') }}
+    - ${{ stdlib('c') }}
+    - make
   host:
-    - oniguruma >=6.9
+    - oniguruma 6.9.*
   run:
     - oniguruma >=6.9
 
